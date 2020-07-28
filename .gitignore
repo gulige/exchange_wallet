@@ -1,0 +1,4 @@
+_build/*
+apps/exchange_common/src/sanity_api/node_modules/*
+apps/exchange_sign/priv/asch/node_modules/*
+log/*

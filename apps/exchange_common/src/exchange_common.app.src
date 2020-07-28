@@ -1,0 +1,47 @@
+{application, exchange_common,
+ [{description, "An OTP application"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[
+      {env, dev},
+      {mg_pool, {
+          ["127.0.0.1:27017"],
+          [{name, {local, mgp}}, {pool_size, 1}, {max_overflow, 5}],
+          [{database, <<"exchange_wallet">>}]}
+      },
+      % token的完整列表
+      {symbols, [ela_ela, ipc_ipc, act_act, ipc_ply, asch_xas, asch_ens, asch@3u_uso, ttt_ttt, neo_neo, neo_gas, ssc_ssc, eos_eos, btm_btm]},
+      % wallet节点所承载的chain的配置列表，{chain, wallet_node_id}
+      {chains, [
+          %{ela, 10000},
+          %{ela, 20000},
+          %{ipc, 10000},
+          %{ipc, 20000}
+          %{act, 10000},
+          %{act, 20000}
+          %{asch, 10000},
+          %{asch, 20000}
+          %{ttt, 10000},
+          %{ttt, 20000}
+          %{neo, 10000},
+          %{neo, 20000}
+          %{ssc, 10000},
+          %{ssc, 20000}
+          %{asch@3u, 10000},
+          %{asch@3u, 20000}
+          {eos, 10000},
+          {eos, 20000}
+          %{btm, 10000},
+          %{btm, 20000}
+      ]}
+  ]},
+  {modules, []},
+
+  {maintainers, []},
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.

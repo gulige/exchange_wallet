@@ -1,0 +1,25 @@
+{application, exchange_wallet,
+ [{description, "An OTP application"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, { exchange_wallet_app, []}},
+  {applications,
+   [kernel,
+    stdlib,
+    inets,
+    ssl,
+    lager,
+    ibrowse,
+    jsonrpc2,
+    jiffy,
+    mongodb,
+    recon_web,
+    exchange_common
+   ]},
+  {env,[]},
+  {modules, []},
+
+  {maintainers, []},
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.
