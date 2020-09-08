@@ -66,10 +66,11 @@ do_tx(Chain, #{<<"_id">> := TxId0,
             undefined -> % 在链上没有找到，可能是临时分叉所导致
                 case IsWithdraw =:= 1 andalso IsInternal =:= 0 of
                     true ->
-                        % 先恢复余额
-                        lib_tx_store:upd_tx(Chain, OldTx#{<<"is_invalid">> := 1}),
-                        [lib_chain_balances:update_balance(Chain, Symbol, FromAddr) || FromAddr <- FromAddrList],
-                        % 等待withdraw进程从finance模块拉取并重新发起
+                        % 防止延展性攻击，不自动处理，手动处理
+                        % % 先恢复余额
+                        % lib_tx_store:upd_tx(Chain, OldTx#{<<"is_invalid">> := 1}),
+                        % [lib_chain_balances:update_balance(Chain, Symbol, FromAddr) || FromAddr <- FromAddrList],
+                        % % 等待withdraw进程从finance模块拉取并重新发起
                         ok;
                     false -> void
                 end;
